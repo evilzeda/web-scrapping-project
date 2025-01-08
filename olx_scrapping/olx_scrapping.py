@@ -5,7 +5,7 @@ import json
 import xlsxwriter
 
 #
-file_level = 'level3.xlsx'
+file_level = 'sheet3__.xlsx'
 id_location = pd.read_excel(file_level)[["id","name"]].values.tolist()
 output = 'olx_result_'+ datetime.now().strftime("%d%m%y") +'.xlsx'
 result = [['url', 'id', 'user_id', 'location_region', 'location_city', 'location_district', \
@@ -115,6 +115,7 @@ def scrapListing(output_previous = '',continue_location = '',continue_page = 0):
                 if id not in id_clean:
                     id_clean.append(id)
                     result.append(kost)
+                    print(f'{kost}, success scrap')
                     to_excel(result,output)
                 else:
                     total_duplicate+=1
